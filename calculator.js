@@ -1,23 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Simple Calculator</title>
-    <link rel="stylesheet" href="calculator.css">
-</head>
-<body>
-    <div id="calculator-container">
-        <input type="number" id="number1" placeholder="Number 1">
-        <input type="number" id="number2" placeholder="Number 2">
+function calculate() {
+  const num1 = parseFloat(document.getElementById('num1').value);
+  const num2 = parseFloat(document.getElementById('num2').value);
+  const op = document.getElementById('operation').value;
+  const resultBox = document.getElementById('result');
 
-        <button id="add">+</button>
-        <button id="subtract">-</button>
-        <button id="multiply">*</button>
-        <button id="divide">/</button>
+  const result = performOperation(num1, num2, op);
+  resultBox.textContent = `Result: ${result}`;
+}
 
-        <div id="result">Result: <span id="calculation-result">0</span></div>
-    </div>
-    <script src="calculator.js"></script>
-</body>
-</html>
-  
+function performOperation(a, b, op) {
+  if (isNaN(a) || isNaN(b)) return "Invalid input";
+
+  switch (op) {
+    case '+':
+      return a + b;
+    case '-':
+      return a - b;
+    case '*':
+      return a * b;
+    case '/':
+      return b !== 0 ? a / b : "Cannot divide by zero";
+    default:
+      return "Unknown operation";
+  }
+}
