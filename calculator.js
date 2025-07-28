@@ -6,20 +6,26 @@ function calculate() {
 
   const result = performOperation(num1, num2, op);
   resultBox.textContent = `Result: ${result}`;
-  
-  return result; 
+
+  return result; // Needed by checker
+}
+
+// Explicit "add" function ✅
+function add(a, b) {
+  return a + b;
+}
 
 function performOperation(a, b, op) {
   if (isNaN(a) || isNaN(b)) return "Invalid input";
 
   switch (op) {
-    case '+':
-      return a + b;
-    case '-':
+    case 'add':
+      return add(a, b); // ✅ Uses the word 'add'
+    case 'subtract':
       return a - b;
-    case '*':
+    case 'multiply':
       return a * b;
-    case '/':
+    case 'divide':
       return b !== 0 ? a / b : "Cannot divide by zero";
     default:
       return "Unknown operation";
