@@ -6,7 +6,8 @@ function calculate() {
 
   const result = performOperation(num1, num2, op);
   resultBox.textContent = `Result: ${result}`;
-}
+  
+  return result; 
 
 function performOperation(a, b, op) {
   if (isNaN(a) || isNaN(b)) return "Invalid input";
