@@ -1,16 +1,3 @@
-function calculate() {
-  const num1 = parseFloat(document.getElementById('num1').value);
-  const num2 = parseFloat(document.getElementById('num2').value);
-  const op = document.getElementById('operation').value;
-  const resultBox = document.getElementById('result');
-
-  const result = performOperation(num1, num2, op);
-  resultBox.textContent = `Result: ${result}`;
-
-  return result; // Needed by checker
-}
-
-// Explicit "add" function ✅
 function add(a, b) {
   return a + b;
 }
@@ -20,7 +7,7 @@ function performOperation(a, b, op) {
 
   switch (op) {
     case 'add':
-      return add(a, b); // ✅ Uses the word 'add'
+      return add(a, b);
     case 'subtract':
       return a - b;
     case 'multiply':
@@ -31,3 +18,24 @@ function performOperation(a, b, op) {
       return "Unknown operation";
   }
 }
+
+function calculate() {
+  const num1 = parseFloat(document.getElementById('num1').value);
+  const num2 = parseFloat(document.getElementById('num2').value);
+  const op = document.getElementById('operation').value;
+  const resultBox = document.getElementById('result');
+
+  const result = performOperation(num1, num2, op);
+  resultBox.textContent = `Result: ${result}`;
+
+  return result; 
+}
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  const btn = document.getElementById('calculateBtn');
+  if (btn) {
+    btn.addEventListener('click', calculate);
+  }
+});
+    
